@@ -1,7 +1,7 @@
 galaxy_info:
-  author: your name
-  description: your description
-  company: your company (optional)
+  author: Alvaro Bacelar
+  description: Install docker community on server ubuntu or centos
+  company: Alvaro Bacelr
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
@@ -43,8 +43,30 @@ galaxy_info:
   #   - 1.0
   #   - 7
   #   - 99.99
-
-  galaxy_tags: []
+  min_ansible_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Fedora
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+        - bionic
+  galaxy_tags:
+    - web
+    - system
+    - containers
+    - docker
+    - server
     # List tags for your role here, one per line. A tag is a keyword that describes
     # and categorizes the role. Users find roles by searching for tags. Be sure to
     # remove the '[]' above, if you add tags to this list.
