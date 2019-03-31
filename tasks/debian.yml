@@ -1,12 +1,10 @@
 ---
 
 - name: Garantir a instalacao do docker no Debian
-  apt: name={{ item }} update_cache=yes state=present
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - software-properties-common
+  apt: 
+  name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common'] 
+  update_cache: true 
+  state: present
 
 - name: Adicionando a chave gpg
   apt_key:

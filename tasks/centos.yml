@@ -1,12 +1,9 @@
 ---
 
 - name: Instalando as dependencias do docker no Centos
-  yum: name={{ item }}
-  with_items:
-    - yum-utils
-    - device-mapper-persistent-data
-    - lvm2
-    - gcc
+  yum: 
+  name: ['yum-utils', 'device-mapper-persistent-data', 'lvm2', 'gcc']
+  state: present
 
 - name: Adicionando o repositorio do docker
   get_url:
