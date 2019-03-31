@@ -19,7 +19,7 @@
 - name: Instalando o Docker
   apt:
     name: ['docker-ce', 'containerd.io']
-    update_cache: true
+    update_cache: yes
     state: present
   notify:
     - start docker
