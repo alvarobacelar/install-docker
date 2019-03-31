@@ -9,4 +9,4 @@
       when: ansible_os_family == 'Debian'
 
   roles:
-    - role: alvarobacelar.consul
+    - role: alvarobacelar.install-docker
