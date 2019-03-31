@@ -11,6 +11,8 @@
     dest: /etc/yum.repos.d/docker-ce.repo
 
 - name: Instalando o docker-ce no centos
-  yum: name=docker-ce state=present
+  yum:
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
+    state: present
   notify:
     - start docker
