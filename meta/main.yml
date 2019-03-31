@@ -4,7 +4,7 @@ galaxy_info:
   description: Install docker community on server ubuntu or centos
   company: Alvaro Bacelr
 
-  license: license (GPLv2, CC-BY, etc)
+  license: Apache License, Version 2.0
 
   min_ansible_version: 2.4
   platforms:
