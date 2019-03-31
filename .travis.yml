@@ -4,11 +4,10 @@ services: docker
 
 env:
   global:
-    - ROLE_NAME: install-docker
+    - ROLE_NAME: consul
   matrix:
     - MOLECULE_DISTRO: centos7
-    - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: ubuntu1604
+    - MOLECULE_DISTRO: debian9
 
 install:
   # Install test dependencies.
@@ -17,8 +16,8 @@ install:
 before_script:
   # Use actual Ansible Galaxy role name for the project directory.
   - cd ../
-  - mv $ROLE_NAME geerlingguy.$ROLE_NAME
-  - cd geerlingguy.$ROLE_NAME
+  - mv $ROLE_NAME alvarobacelar.$ROLE_NAME
+  - cd alvarobacelar.$ROLE_NAME
 
 script:
   # Run tests.
