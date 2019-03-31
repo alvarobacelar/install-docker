@@ -4,7 +4,7 @@ services: docker
 
 env:
   global:
-    - ROLE_NAME: install_docker
+    - ROLE_NAME: install-docker
   matrix:
     - MOLECULE_DISTRO: centos7
     - MOLECULE_DISTRO: debian9
