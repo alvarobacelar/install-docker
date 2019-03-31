@@ -1,0 +1,22 @@
+---
+
+- name: Garantir a instalacao do docker no Debian
+  apt: name={{ item }} update_cache=yes state=present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+
+- apt_key:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
+    state: present
+
+- apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    state: present
+
+- name: Instalando o Docker
+  apt: name=docker-ce update_cache=yes state=present
+  notify:
+    - start docker

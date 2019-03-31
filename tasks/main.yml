@@ -1,47 +1,8 @@
 ---
 # tasks file for docker
-- name: Garantir a instalacao do docker no Debian
-  apt: name={{ item }} update_cache=yes state=present
-  with_items: 
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - software-properties-common
+
+- include: debian.yml
   when: ansible_os_family == "Debian"
 
-- apt_key: 
-    url: "https://download.docker.com/linux/ubuntu/gpg"
-    state: present 
-  when: ansible_os_family == "Debian"
-
-- apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-    state: present
-  when: ansible_os_family == "Debian"
-
-- name: Instalando o Docker 
-  apt: name=docker-ce update_cache=yes state=present
-  when: ansible_os_family == "Debian"
-
-- name: Instalando as dependencias do docker no Centos
-  yum: name={{ item }}
-  with_items:
-    - yum-utils
-    - device-mapper-persistent-data
-    - lvm2
-    - gcc
-  when: ansible_os_family == "RedHat"
-
-- name: Adicionando o repositorio do docker
-  get_url: 
-     url: "https://download.docker.com/linux/centos/docker-ce.repo" 
-     dest: /etc/yum.repos.d/docker-ce.repo
-  when: ansible_os_family == "RedHat"
-
-- name: Instalando o docker-ce no centos
-  yum: name=docker-ce state=present
-  when: ansible_os_family == "RedHat"
-
-- name: Reiniciando o servico
-  service: name=docker state=started
-  
+- include: centos.yml
+  when: ansible_os_family == "RedHat" 

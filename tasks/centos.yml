@@ -1,0 +1,19 @@
+---
+
+- name: Instalando as dependencias do docker no Centos
+  yum: name={{ item }}
+  with_items:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+    - gcc
+
+- name: Adicionando o repositorio do docker
+  get_url:
+     url: "https://download.docker.com/linux/centos/docker-ce.repo"
+     dest: /etc/yum.repos.d/docker-ce.repo
+
+- name: Instalando o docker-ce no centos
+  yum: name=docker-ce state=present
+  notify:
+    - start docker
